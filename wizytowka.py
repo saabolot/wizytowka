@@ -1,26 +1,30 @@
+
+class card:  
+    #pass
+    class card():
+        def __init__(self, name, company, job, address, phone_number, email):
+            self.name = None
+            self.company = None
+            self.job = None
+            self.email = None
+            self.phone_number = None
+        class BaseContact(card):
+            def __init__(self, phone_number, address):
+                super().__init__(self, phone_number, address)
+                self.phone_number = phone_number            
+            def __contact__(self, phone_number, name):
+                self.phone_number = phone_number  
+                print(f'Wybieram numer {phone_number} i dzwonię do {name}')
+        class BusinessContact(card):
+            def __init__(self, phone_number, job, company):
+                super().__init__(self, phone_number, job, company)
+                self.phone_number = phone_number
+            def __contact__(self, phone_number, name):
+                print(f'Wybieram numer {phone_number} i dzwonię do {name}')
 from faker import Faker
 fake = Faker(['pl_PL'])
-for i in range(10):
-    
-    
-    class card():
-        def __init__(self, name, company, job, email):
-            self.name = fake.name
-            self.company = fake.company
-            self.job = fake.job
-            self.email = fake.email
-    #print(fake.name(), fake.company(),fake.job(),fake.email())
-        class BaseContact(card):
-            def __init__(self, phone_number, *args):
-                self.phone_number = fake.phone_number
-            def __contact__(self):
-                print(f'Wybieram numer {fake.phone_number} i dzwonię do {fake.name}')
-        class BusinessContact(card):
-            def __init__(self, phone_number, *args):
-                self.phone_number = fake.phone_number
-            def __contact__(self):
-                print(f'Wybieram numer {fake.phone_number} i dzwonię do {fake.name}')
-#print(card) 
 
 
+    
+person1 = BaseContact(fake.address, fake.phone_number)
 
