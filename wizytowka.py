@@ -31,4 +31,3 @@ fake = Faker(['pl_PL'])
 
 
 person1 = BaseContact(fake)
-print(person1)
