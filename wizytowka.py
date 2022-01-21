@@ -1,33 +1,36 @@
 from faker import Faker
+fake = Faker(['pl_PL'])
 
 
-class card:
-    def __init__(self, name, phone_number, address):
-        self.name = None
-        self.email = None
+class Card:
+    def __init__(self, first_name, last_name, phone_number, address, email):
+        self.first_name = None
+        self.last_name = None
         self.phone_number = None
+        self.address = None
+        self.email = None
 
-
-class BaseContact(card):
+        #Variables
+        self._label_length = len(first_name) + len(last_name)
+    
+class BaseContact(Card):
     def __init__(self, *args, **kwargs):
         super().__init__(self)
-        self.phone_number = None
+        
+    def __contact__(self):
+        print(f'Wybieram numer {phone_number} i dzwonię do {first_name} {last_name}')
+    
+    @property
+    def label_length(self):
+        return self.label_length
 
-    def __contact__(self, phone_number, name):
-        self.phone_number = phone_number
-        print(f'Wybieram numer {phone_number} i dzwonię do {name}')
-
-
-class BusinessContact(card):
+class BusinessContact(Card):
     def __init__(self, job, company, email,  *args, **kwargs):
         super().__init__(self, job, company)
         self.phone_number = None
 
-    def __contact__(self, phone_number, name):
-        print(f'Wybieram numer {phone_number} i dzwonię do {name}')
+    def __contact__(self, phone_number, first_name, last_name):
+        print(f'Wybieram numer {phone_number} i dzwonię do {first_name} {last_name}')
 
 
-fake = Faker(['pl_PL'])
-
-
-person1 = BaseContact(fake)
+person1 = BaseContact
