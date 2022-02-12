@@ -1,8 +1,3 @@
-from faker import Faker
-import faker
-
-fake = Faker(['pl_PL'])
-
 
 class Card:
     def __init__(self, first_name, last_name, phone_number, address, email):
@@ -29,6 +24,8 @@ class BaseCard(Card):
         return self._label_length
 
     def fejk():
+        from faker import Faker
+        fake = Faker(['pl_PL'])
         print(fake.first_name(), fake.last_name(), fake.phone_number(), fake.address(), fake.email())
 
 
@@ -49,6 +46,8 @@ class BussinessCard(Card):
 
 
     def fejk():
+        from faker import Faker
+        fake = Faker(['pl_PL'])
         print(fake.first_name(), fake.last_name(), fake.phone_number(), fake.address(), fake.email(), fake.job(), fake.company())
    
 
