@@ -1,4 +1,5 @@
-
+from faker import Faker
+fake = Faker(['pl_PL'])
 
 
 class Card:
@@ -13,7 +14,6 @@ class Card:
         self._label_length = 0
 
 
-
 class BaseCard(Card):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)  
@@ -24,15 +24,13 @@ class BaseCard(Card):
     @property
     def label_length(self):
         self._label_length = len({self.first_name}+" "+{self.last_name})
-        return self._label_length
-
-    
+        return self._label_length 
 
 
 class BussinessCard(Card):
     def __init__(self, job, company, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.jon = job
+        self.job = job
         self.company = company
 
     def contact(self):
@@ -44,25 +42,20 @@ class BussinessCard(Card):
         self._label_length = len({self.first_name}+" "+{self.last_name})
         return self._label_length
 
-
 def fejk_base():
-    from faker import Faker
-    fake = Faker(['pl_PL'])
     print(fake.first_name(), fake.last_name(), fake.phone_number(), fake.address(), fake.email())
 
-def fejk_bussiness():        
-    from faker import Faker
-    fake = Faker(['pl_PL'])
+def fejk_bussiness():             
     print(fake.first_name(), fake.last_name(), fake.phone_number(), fake.address(), fake.email(), fake.job(), fake.company())
 
 def create_contacts(rodzaj, ilosc):
     if rodzaj == BaseCard:
         for i in range(ilosc):
-            wizyt = fejk_base()
+            wizyt = fejk_base() 
             print(wizyt)
     elif rodzaj == BussinessCard:
         for i in range(ilosc):  
-            wizyt=fejk_bussiness()    
+            wizyt = fejk_bussiness()
             print(wizyt)  
     else:
         print("zły rodzaj wizytówki")
