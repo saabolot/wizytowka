@@ -43,24 +43,24 @@ class BussinessCard(Card):
         return self._label_length
 
 def fejk_base():
-    print(fake.first_name(), fake.last_name(), fake.phone_number(), fake.address(), fake.email())
+    return fake.first_name(), fake.last_name(), fake.phone_number(), fake.address(), fake.email()
 
 def fejk_bussiness():             
-    print(fake.first_name(), fake.last_name(), fake.phone_number(), fake.address(), fake.email(), fake.job(), fake.company())
+    return fake.first_name(), fake.last_name(), fake.phone_number(), fake.address(), fake.email(), fake.job(), fake.company()
 
 def create_contacts(rodzaj, ilosc):
     if rodzaj == BaseCard:
         for i in range(ilosc):
-            wizyt = fejk_base() 
+            wizyt = fejk_base()
             print(wizyt)
     elif rodzaj == BussinessCard:
         for i in range(ilosc):  
             wizyt = fejk_bussiness()
-            print(wizyt)  
+            print(wizyt)
     else:
         print("zły rodzaj wizytówki")
 
-create_contacts(BussinessCard, 3)
+create_contacts(BussinessCard, 5)
 
 
         
